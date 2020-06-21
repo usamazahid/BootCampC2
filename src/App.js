@@ -1,9 +1,11 @@
 import React from 'react';
-import './App.css';
-
+import Cars from './cars.js';
 function App() {
   return (
-   <div>Hello World from Usama Zahid.</div>
+    <div className="App">
+   <Cars carName='Bugatti' speed="304MPH"/>
+   <Cars carName='Koenigsegg' speed="278MPH"/>
+   </div>
   );
 }
 
