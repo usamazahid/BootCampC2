@@ -32,11 +32,14 @@ jobs:
       with:
         cmd: install
         
+    - name: Creating Build
+      run: yarn build
+      
     - name: installing surge
       run: npm install -g surge
       
     - name: deploying on surge
-      run: surge ./ http://bootcampc2-react.surge.sh/ --token ${{ secrets.SURGE_SECRETE }}
+      run: surge ./build http://bootcampc2-react.surge.sh/ --token ${{ secrets.SURGE_SECRETE }}
      
      
      
