@@ -1,10 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-   <div>Hello World</div>
+   <div>Hello World from Usama Zahid.</div>
   );
 }
 
