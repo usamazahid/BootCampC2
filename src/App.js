@@ -1,11 +1,18 @@
-import React from 'react';
-import Cars from './cars.js';
+import React, {useEffect, useState} from 'react';
+import AppBar from './AppBar'
+import Grid from './grid'
+import Combobox from './combobox'
+
 function App() {
+	
   return (
-    <div className="App">
-   <Cars carName='Bugatti' speed="304MPH"/>
-   <Cars carName='Koenigsegg' speed="278MPH"/>
-   </div>
+  
+  <div>
+  <AppBar />
+    <Grid />
+   <Combobox />
+
+    </div>
   );
 }
 
