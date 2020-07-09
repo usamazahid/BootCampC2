@@ -48,13 +48,8 @@ console.log(value);
       }}
       renderInput={(params) => <TextField {...params} label="Select Country" variant="outlined" />}
     />
+    <h1>{value.country}</h1>
     </div>
   );
 }
 
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const top100Films = [
-  { title: 'The Shawshank Redemption', year: 1994 },
-  { title: 'The Godfather', year: 1972 },
-  
-];
