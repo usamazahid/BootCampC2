@@ -3,10 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import ApiCall from './apicall';
 import current from './img/currentCases.jpg'
 import recovered from './img/recovered.jpg'
 import deaths from './img/death.jpg'
+import {Doughnut} from 'react-chartjs-2';
+import ComboBox from './combobox'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,30 +16,31 @@ const useStyles = makeStyles((theme) => ({
     maxWidth:900,
     margin:"0 auto"
   },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
 
-  },
   current:{
+    padding: theme.spacing(2),
     backgroundImage: `url(${current})`,
     color:"white",
-    textAlign:"center",
+    textAlign:"center"
   },
-
+ 
   recovered:{
+    padding: theme.spacing(2),
     backgroundImage: `url(${recovered})`,
     color:"white",
-    textAlign:"center",
+    textAlign:"center"
   },
 
   deaths:{
+    padding: theme.spacing(2),
     backgroundImage: `url(${deaths})`,
     color:"white",
-    textAlign:"center",
+    textAlign:"center"
   }
 }));
+
+
+
 
 export default function AutoGrid() {
   const classes = useStyles();
@@ -55,13 +57,34 @@ export default function AutoGrid() {
 }, []);
 
 
+const data = {
+  labels: [
+  'Active',
+  'Recovered',
+  'Deaths'
+],
+
+datasets: [{
+  data: [covidData.total_active_cases, covidData.total_recovered, covidData.total_deaths],
+  backgroundColor: [
+  '#36A2EB',
+  '#FFCE56',
+  '#FF6384',
+  ],
+  hoverBackgroundColor: [
+  '#36A2EB',
+  '#FFCE56',
+  '#FF6384',
+  ]
+}]
+};
 
   return (
 
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={4} >
-          <Paper className={classes.paper, classes.current} elevation={3}>
+          <Paper className={classes.current} elevation={3}>
           <Typography  gutterBottom>
           Total Active Cases
         </Typography>
@@ -69,14 +92,14 @@ export default function AutoGrid() {
             </Paper>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Paper className={classes.paper, classes.recovered} elevation={3}>
+          <Paper className={classes.recovered} elevation={3}>
           <Typography  gutterBottom>
           Total Recovered Cases
         </Typography>
         {covidData.total_recovered}</Paper>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Paper className={classes.paper, classes.deaths} elevation={3}>
+          <Paper className={classes.deaths} elevation={3}>
           <Typography  gutterBottom>
           Total Deaths
         </Typography>
@@ -84,7 +107,16 @@ export default function AutoGrid() {
         </Grid>
        
       </Grid>
-    
+
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={8} >
+        <h2>Cases all around world.</h2>
+        <Doughnut data={data} />
+        </Grid>
+        <Grid item xs={12} sm={4} >
+        <ComboBox />
+        </Grid>
+      </Grid> 
     </div>
   );
 }

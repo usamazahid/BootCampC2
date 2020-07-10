@@ -1,14 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 100,
+    maxWidth: 300,
+    marginTop: 30,
   },
   bullet: {
     display: 'inline-block',
@@ -21,33 +21,44 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  media: {
+    height: 140,
+
+  },
+
 });
 
-export default function SimpleCard() {
+
+export default function SimpleCard(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+
+ 
 
   return (
     <Card className={classes.root}>
       <CardContent>
+      {<CardMedia
+          className={classes.media}
+          image={props.value.countryInfo.flag}
+          title="Contemplative Reptile"
+        />}
+
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
+        {props.value.country}
         </Typography>
         <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
+         Total Cases: {props.value.cases}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          adjective
+        Active: {props.value.active}
         </Typography>
         <Typography variant="body2" component="p">
-          well meaning and kindly.
+        Recovered: {props.value.recovered}
           <br />
-          {'"a benevolent smile"'}
+         Deaths: {props.value.deaths}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+  
     </Card>
   );
 }

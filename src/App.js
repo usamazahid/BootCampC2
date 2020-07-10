@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import AppBar from './AppBar'
 import Grid from './grid'
-import Combobox from './combobox'
 
 function App() {
 	
@@ -10,8 +9,6 @@ function App() {
   <div>
   <AppBar />
     <Grid />
-   <Combobox />
-
     </div>
   );
 }

@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
+import Card from './card'
 
 const options = ['Option 1', 'Option 2'];
 const useStyles = makeStyles((theme) => ({
@@ -11,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop:30,
     maxWidth:900,
     margin:"0 auto"
+
   },
 }));
 
@@ -34,7 +36,7 @@ export default function ComboBox() {
 
 
 const classes = useStyles();
-console.log(value);
+
 
   return (
       <div className={classes.root}>
@@ -48,7 +50,10 @@ console.log(value);
       }}
       renderInput={(params) => <TextField {...params} label="Select Country" variant="outlined" />}
     />
-    <h1>{value.country}</h1>
+
+{((value !== "Option 1" && value !== null && value !==undefined)? <Card value={value} /> : "")}
+ 
+    
     </div>
   );
 }
